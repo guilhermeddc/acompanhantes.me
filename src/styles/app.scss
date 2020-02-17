@@ -1,0 +1,60 @@
+@import "@/styles/colors.scss";
+* {
+  font-family: "Roboto";
+  list-style: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Odibee Sans", cursive;
+}
+
+html,
+body {
+  background: white;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+
+* {
+  font-family: "Roboto";
+  list-style: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+input,
+textarea {
+  font-family: "Roboto";
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
