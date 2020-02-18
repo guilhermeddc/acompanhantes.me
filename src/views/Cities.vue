@@ -1,18 +1,14 @@
 <template>
-  <BaseLayout>
-    <HomeBody />
-  </BaseLayout>
+  <BaseLayout></BaseLayout>
 </template>
 
 <script>
 import BaseLayout from "../layouts/BaseLayout";
-import HomeBody from "../containers/HomeBody";
 
 export default {
   name: "Home",
   components: {
-    BaseLayout,
-    HomeBody
+    BaseLayout
   }
 };
 </script>

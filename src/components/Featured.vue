@@ -2,9 +2,11 @@
   <div
     :style="`background-image: url('${image}')`"
     @mouseenter="active = !active"
-    @mousedown="active = !active"
+    @mouseleave="active = !active"
+    :class="active ? 'active' : ''"
   >
-    <p>{{name}}</p>
+    <h2 :style="active ? '' : 'display: none'">{{description}}</h2>
+    <p :style="active ? 'display: none' : ''">{{name}}</p>
   </div>
 </template>
 
@@ -16,7 +18,8 @@ export default {
   name: "Featured",
   props: {
     image: VueTypes.string.def(image),
-    name: VueTypes.string.def("your name")
+    name: VueTypes.string.def("your name"),
+    description: VueTypes.string.def("description")
   },
   data() {
     return {
@@ -35,10 +38,16 @@ div {
   width: 100%;
   border-radius: 6px;
   margin: 5px;
+  border-bottom: 2px solid $tertiary;
   cursor: pointer;
   display: flex;
   align-items: flex-end;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5), 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.6s;
+  &:hover {
+    width: 250%;
+    transition: all 0.6s;
+  }
   & p {
     display: flex;
     font-size: 12px;
@@ -51,5 +60,18 @@ div {
     color: $light;
     padding-left: 10px;
   }
+  & h2 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: $light;
+    text-align: center;
+    padding: 0 10px;
+    background: #26262680;
+    transition: all 0.3s;
+  }
+  transition: all 0.3s;
 }
 </style>

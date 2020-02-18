@@ -1,8 +1,11 @@
 <template>
   <main>
     <NavBar />
-    <div class="content">
-      <slot />
+    <div>
+      <Feature />
+      <Body>
+        <slot />
+      </Body>
     </div>
     <Footer />
   </main>
@@ -11,18 +14,22 @@
 <script>
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Feature from "./components/Feature";
+import Body from "./components/Body";
 
 export default {
   name: "BaseLayout",
   components: {
     NavBar,
-    Footer
+    Footer,
+    Feature,
+    Body
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.content {
-  padding-top: 67px;
+div {
+  padding-top: 90px;
 }
 </style>

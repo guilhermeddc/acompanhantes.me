@@ -45,6 +45,11 @@ footer {
       font-weight: 300;
       padding: 20px 40px;
       margin-left: 10px;
+      border-radius: 6px;
+      &:hover {
+        opacity: 0.8;
+        transition: opacity 0.3s;
+      }
     }
   }
   & .copyright {

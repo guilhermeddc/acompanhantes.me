@@ -1,10 +1,11 @@
 <template>
   <section class="container">
     <nav>
+      <Title title="Acompanhantes em Destaque" />
       <template v-for="(item, index) in featured">
         <Models :key="index" :name="`${item.first_name} ${item.last_name}`" :image="item.image" />
       </template>
-      <template v-for="(item, index) in all.slice(0, 6)">
+      <template v-for="(item, index) in all">
         <Models
           :height="200"
           :key="index"
@@ -14,30 +15,20 @@
       </template>
     </nav>
     <article>
-      <Models :height="500" :name="superFeatured[0].first_name" :image="superFeatured[0].image" />
-      <div class="content">
-        <template v-for="(item, index) in all">
-          <Card
-            :height="300"
-            :key="index"
-            :name="`${item.first_name} ${item.last_name}`"
-            :image="item.image"
-          />
-        </template>
-      </div>
+      <slot />
     </article>
   </section>
 </template>
 
 <script>
-import Models from "../components/Models";
-import Card from "../components/Card";
+import Models from "../../components/Models";
+import Title from "../../components/Title";
 
 export default {
   name: "Body",
   components: {
     Models,
-    Card
+    Title
   },
   computed: {
     all() {
@@ -45,9 +36,6 @@ export default {
     },
     featured() {
       return this.$store.getters.featured;
-    },
-    superFeatured() {
-      return this.$store.getters.superFeatured;
     }
   }
 };
@@ -55,26 +43,24 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  padding: 35px;
+  width: 100%;
+  padding: 10px;
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: center;
   & nav {
     flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
   }
   & article {
-    padding: 0 20px;
+    padding: 0 0 0 30px;
     flex: 3;
     display: flex;
     flex-direction: column;
     width: 100%;
-    & .content {
-      flex: 1;
-      display: flex;
-      flex-wrap: wrap;
-    }
   }
 }
 </style>

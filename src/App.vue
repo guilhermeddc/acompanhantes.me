@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <router-view />
-  </div>
+  <transition>
+    <div id="app">
+      <router-view />
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -48,5 +50,15 @@ img {
 
 a {
   text-decoration: none;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s;
+}
+
+.v-enter,
+.v-leave-to {
+  transition: all 0.3s;
 }
 </style>

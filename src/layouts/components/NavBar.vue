@@ -8,16 +8,16 @@
             <router-link to="/">Home</router-link>
           </li>
           <li>
-            <router-link to="/">Modelos</router-link>
+            <router-link to="/modelos">Modelos</router-link>
           </li>
           <li>
-            <router-link to="/">Cidade</router-link>
+            <router-link to="/cidade">Cidade</router-link>
           </li>
           <li>
-            <router-link to="/">Contato</router-link>
+            <router-link to="/contato">Contato</router-link>
           </li>
           <li>
-            <router-link to="/">Anucie</router-link>
+            <router-link to="/anuncie">Anucie</router-link>
           </li>
         </ul>
       </nav>
@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.router-link-exact-active {
+  background: $tertiary;
+}
 header {
   background: #262626;
   position: fixed;
@@ -64,15 +67,6 @@ header {
     justify-content: space-around;
     & li {
       padding: 23px 0;
-      &:nth-child(1) {
-        background: $tertiary;
-      }
-      &:nth-child(3) {
-        background: $tertiary;
-      }
-      &:nth-child(5) {
-        background: $tertiary;
-      }
     }
     & li a {
       color: $light;

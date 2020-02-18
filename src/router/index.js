@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+import Advertise from '../views/Advertise.vue'
+import Cities from '../views/Cities.vue'
+import Contact from '../views/Contact.vue'
+import Models from '../views/Models.vue'
 
 Vue.use(VueRouter)
 
@@ -12,10 +15,25 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
-  }
+    path: '/anuncie',
+    name: 'Advertise',
+    component: Advertise
+  },
+  {
+    path: '/cidade',
+    name: 'Cities',
+    component: Cities
+  },
+  {
+    path: '/contato',
+    name: 'Contact',
+    component: Contact
+  },
+  {
+    path: '/modelos',
+    name: 'Models',
+    component: Models
+  },
 ]
 
 const router = new VueRouter({

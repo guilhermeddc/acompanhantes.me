@@ -3,9 +3,10 @@
     class="card"
     :style="`background-image: url('${image}'); height: ${height}px`"
     @mouseenter="active = !active"
-    @mousedown="active = !active"
+    @mouseleave="active = !active"
   >
-    <p :style="`font-size: ${fontSize}px; height: ${Size}px;`">{{name}}</p>
+    <h2 :style="active ? '' : 'display: none'">{{description}}</h2>
+    <p :style="active ? 'display: none' : ''">{{name}}</p>
   </div>
 </template>
 
@@ -18,8 +19,7 @@ export default {
   props: {
     image: VueTypes.string.def(image),
     name: VueTypes.string.def("your name"),
-    fontSize: VueTypes.number.def(16),
-    Size: VueTypes.number.def(50),
+    description: VueTypes.string.def("description"),
     height: VueTypes.number.def(380)
   },
   data() {
@@ -36,13 +36,14 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   height: 380px;
-  width: 98%;
+  width: 99%;
   border-radius: 6px;
-  margin: 10px;
+  margin: 10px 10px 20px;
   cursor: pointer;
   display: flex;
   align-items: flex-end;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5), 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid $tertiary;
   & p {
     display: flex;
     font-size: 16px;
@@ -54,6 +55,15 @@ export default {
     width: 100%;
     color: $light;
     padding-left: 10px;
+  }
+  & h2 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #26262680;
+    color: $light;
   }
 }
 </style>

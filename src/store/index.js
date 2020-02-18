@@ -13,6 +13,9 @@ export default new Vuex.Store({
     all (state) {
       return state.models;
     },
+    allReverse (state) {
+      return state.models.reverse()
+    },
     featured (state) {
       return state.models.filter(item => item.featured === true)
     },
