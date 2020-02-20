@@ -11,6 +11,7 @@ export default {
   name: "App",
   created() {
     this.$store.dispatch("getModels");
+    this.$store.dispatch("getCities");
   }
 };
 </script>

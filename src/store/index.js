@@ -7,9 +7,21 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    models: []
+    models: [],
+    cities: [],
+    params: '',
+    alt: 'Acompanhantes, garotas de programa'
   },
   getters: {
+    alt (state) {
+      return state.alt;
+    },
+    params (state) {
+      return state.params;
+    },
+    cities (state) {
+      return state.cities;
+    },
     all (state) {
       return state.models;
     },
@@ -27,12 +39,29 @@ export default new Vuex.Store({
     GET_MODELS (state, payload) {
       state.models = payload;
     },
+    GET_PARAMS (state, payload) {
+      state.params = payload;
+    },
+    GET_CITIES (state, payload) {
+      state.cities = payload;
+    },
   },
   actions: {
+    getParams (context, payload) {
+      context.commit('GET_PARAMS', payload)
+    },
     async getModels (context) {
       try {
         const { data: res } = await api.get("/models/");
         context.commit('GET_MODELS', res.results);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getCities (context) {
+      try {
+        const { data: res } = await api.get("/cities/");
+        context.commit('GET_CITIES', res.results);
       } catch (error) {
         console.error(error);
       }

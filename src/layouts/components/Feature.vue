@@ -1,6 +1,9 @@
 <template>
   <section class="container">
-    <Title title="Acompanhantes e Garotas de Programa em" city="Santa Maria" />
+    <Title
+      title="Acompanhantes e Garotas de Programa em"
+      :city="`${city[0].name}/${city[0].state.uf}`"
+    />
     <div class="feature">
       <template v-for="(item, index) in all.slice(0, 7)">
         <Featured
@@ -32,6 +35,11 @@ export default {
   computed: {
     all() {
       return this.$store.getters.all;
+    },
+    city() {
+      return this.$store.getters.cities.filter(
+        city => city.slug === this.$route.params.city
+      );
     }
   }
 };

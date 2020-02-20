@@ -1,23 +1,22 @@
 <template>
   <Header>
     <div class="container nav-bar">
-      <img :src="logo.logoLight" alt="Acompanhantes.me" class="logo" />
+      <router-link :to="{name: 'Home'}">
+        <img :src="logo.logoLight" alt="Acompanhantes.me" class="logo" />
+      </router-link>
       <nav>
         <ul class="menu">
           <li>
-            <router-link to="/">Home</router-link>
+            <router-link :to="`/${params}`">Modelos</router-link>
           </li>
           <li>
-            <router-link to="/modelos">Modelos</router-link>
+            <router-link :to="{name: 'Cities'}">Cidade</router-link>
           </li>
           <li>
-            <router-link to="/cidade">Cidade</router-link>
+            <router-link :to="{name: 'Contact'}">Contato</router-link>
           </li>
           <li>
-            <router-link to="/contato">Contato</router-link>
-          </li>
-          <li>
-            <router-link to="/anuncie">Anucie</router-link>
+            <router-link :to="{name: 'Advertise'}">Anucie</router-link>
           </li>
         </ul>
       </nav>
@@ -38,6 +37,11 @@ export default {
         logoLight
       }
     };
+  },
+  computed: {
+    params() {
+      return this.$store.getters.params;
+    }
   }
 };
 </script>
