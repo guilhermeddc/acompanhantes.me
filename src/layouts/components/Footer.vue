@@ -2,7 +2,7 @@
   <footer>
     <div class="header-footer">
       <h1>Trabalhe conosco:</h1>
-      <router-link to="/">Anuncie</router-link>
+      <router-link :to="{name: 'Advertise'}">Anuncie</router-link>
     </div>
     <div class="copyright">
       <p>
@@ -37,6 +37,7 @@ footer {
       color: $light;
       font-weight: 400;
       padding: 10px;
+      font-size: 28px;
     }
     & a {
       color: $light;

@@ -6,7 +6,7 @@
 import BaseLayout from "../layouts/BaseLayout";
 
 export default {
-  name: "Home",
+  name: "Terms",
   components: {
     BaseLayout
   }

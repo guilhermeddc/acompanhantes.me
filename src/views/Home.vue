@@ -10,7 +10,7 @@
         <p>/</p>
         <router-link to="/termos-de-servicos">Termos de Serviço</router-link>
       </nav>
-      <p>O Acompanhates Universitária não é uma agência de Acompanhantes, e não se comporta como tal, destina-se apenas a divulgação de ensaios fotográficos sensuais de Garotas de alto nível em SP, atualmente o termo Garotas de Programa é pouco usado referindo-se as anunciantes. Não intermediamos nenhum contato das acompanhantes de São Paulo. Não temos nenhuma interferência e/ou envolvimento e/ou responsabilidade nas atividades externas das anunciantes. Se você for menor de 18 anos, aconselhamos não acessar. No caso de adultos, leia a página de Termos de Uso</p>
+      <p>O Acompanhates.ME não é uma agência de Acompanhantes, e não se comporta como tal, destina-se apenas a divulgação de ensaios fotográficos sensuais de Garotas de alto nível em sua região, atualmente o termo Garotas de Programa é pouco usado referindo-se as anunciantes. Não intermediamos nenhum contato das acompanhantes de sua região. Não temos nenhuma interferência e/ou envolvimento e/ou responsabilidade nas atividades externas das anunciantes. Se você for menor de 18 anos, aconselhamos não acessar. No caso de adultos, leia a página de Termos de Uso.</p>
       <h4>© 2020 - Copyright: acompanhantes.me</h4>
     </div>
     <div class="botton container">

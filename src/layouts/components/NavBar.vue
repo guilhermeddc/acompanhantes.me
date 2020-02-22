@@ -10,13 +10,13 @@
             <router-link :to="`/${params}`">Modelos</router-link>
           </li>
           <li>
-            <router-link :to="{name: 'Cities'}">Cidade</router-link>
+            <router-link :to="{name: 'Terms'}">Termos</router-link>
           </li>
           <li>
             <router-link :to="{name: 'Contact'}">Contato</router-link>
           </li>
           <li>
-            <router-link :to="{name: 'Advertise'}">Anucie</router-link>
+            <router-link :to="{name: 'Advertise'}">Anuncie</router-link>
           </li>
         </ul>
       </nav>
@@ -51,6 +51,7 @@ export default {
   background: $tertiary;
 }
 header {
+  z-index: 30;
   background: #262626;
   position: fixed;
   width: 100%;
@@ -62,16 +63,13 @@ header {
     justify-content: space-between;
   }
   & .logo {
-    height: 35px;
     padding: 15px;
+    width: 400px;
   }
   & .menu {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    & li {
-      padding: 23px 0;
-    }
     & li a {
       color: $light;
       font-weight: 300;

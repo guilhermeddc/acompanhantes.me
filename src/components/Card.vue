@@ -63,6 +63,8 @@ div {
     height: 100%;
     justify-content: center;
     align-items: center;
+    font-weight: 300;
+    font-size: 22px;
     background: #26262680;
     color: $light;
     text-align: center;

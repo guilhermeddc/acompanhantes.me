@@ -67,6 +67,8 @@ div {
     justify-content: center;
     align-items: center;
     color: $light;
+    font-weight: 300;
+    font-size: 22px;
     text-align: center;
     padding: 0 10px;
     background: #26262680;

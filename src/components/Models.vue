@@ -60,6 +60,8 @@ export default {
     display: flex;
     width: 100%;
     height: 100%;
+    font-weight: 300;
+    font-size: 24px;
     justify-content: center;
     align-items: center;
     background: #26262680;
