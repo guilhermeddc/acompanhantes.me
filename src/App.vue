@@ -62,4 +62,13 @@ a {
 .v-leave-to {
   transition: all 0.3s;
 }
+
+@media only screen and (max-width: 450px) {
+  .container {
+    max-width: 1250px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 !important;
+  }
+}
 </style>

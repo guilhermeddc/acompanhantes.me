@@ -29,6 +29,7 @@
         </template>
       </vue-flux>
     </div>
+    <Section>{{model}}</Section>
   </BaseLayout>
 </template>
 
@@ -61,18 +62,40 @@ export default {
     },
     vfImages: [],
     vfTransitions: ["fade"],
-    vfCaptions: []
+    vfCaptions: [],
+    model: {}
   }),
   created() {
     this.getImages();
+    this.getData();
+  },
+  computed: {
+    id() {
+      return this.$route.params.id;
+    }
+  },
+  watch: {
+    id(newVal) {
+      if (newVal) {
+        this.getImages();
+        this.getData();
+      }
+    }
   },
   methods: {
     async getImages() {
       try {
-        const { id } = this.$route.params;
-        const { data: res } = await api.get(`/photos/?client=${id}`);
+        const { data: res } = await api.get(`/photos/?client=${this.id}`);
         this.vfImages = res.results.map(img => img.photo);
         this.vfCaptions = res.results.map(desc => desc.title);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getData() {
+      try {
+        const { data: res } = await api.get(`/models/${this.id}/`);
+        this.model = res;
       } catch (error) {
         console.error(error);
       }

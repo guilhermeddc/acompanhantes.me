@@ -1,14 +1,20 @@
 <template>
   <div class="content">
     <Title title="Garota em Destaque" />
-    <Models :height="500" :name="superFeatured[0].first_name" :image="superFeatured[0].image" />
+    <Models
+      :height="50"
+      :name="superFeatured[0].first_name"
+      :image="superFeatured[0].image"
+      :id="superFeatured[0].id"
+    />
     <Title title="Acompanhantes - Reais, lindas e simpáticas" />
     <template v-for="(item, index) in all">
       <Card
-        :height="300"
+        :height="30"
         :key="index"
         :name="`${item.first_name} ${item.last_name}`"
         :image="item.image"
+        :id="item.id"
       />
     </template>
   </div>

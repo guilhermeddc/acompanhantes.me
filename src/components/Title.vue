@@ -22,9 +22,29 @@ h1 {
   padding: 2px 0;
   color: $light !important;
   font-size: 24px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5), 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: $shadow;
+  /* box-shadow: inset -7px -7px 14px #272727, inset 7px 7px 14px #393939; */
   width: 99.2%;
   border-top: 2px solid $tertiary;
   border-radius: 6px;
+  background: linear-gradient(315deg, #333333, #2b2b2b);
+}
+@media only screen and (max-width: 450px) {
+  h1 {
+    font-size: 18px;
+    width: 99%;
+    margin: 0 auto 5px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+@media only screen and (max-width: 321px) {
+  h1 {
+    font-size: 18px;
+    width: 99%;
+    margin: 0 auto 5px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
 </style>

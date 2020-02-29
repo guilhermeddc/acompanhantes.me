@@ -5,12 +5,25 @@
       :city="`${city[0].name}/${city[0].state.uf}`"
     />
     <div class="feature">
-      <template v-for="(item, index) in all.slice(0, 7)">
+      <template v-for="(item, index) in all.slice(0, 9)">
         <Featured
           :key="index"
           :name="`${item.first_name} ${item.last_name}`"
           :image="item.image"
           :description="item.shortDescription"
+          :id="item.id"
+        />
+      </template>
+    </div>
+    <div class="feature-moblie">
+      <template v-for="(item, index) in all.slice(0, 9)">
+        <Featured
+          :key="index"
+          v-show="counter === index"
+          :name="`${item.first_name} ${item.last_name}`"
+          :image="item.image"
+          :description="item.shortDescription"
+          :id="item.id"
         />
       </template>
     </div>
@@ -29,8 +42,24 @@ export default {
   },
   data() {
     return {
-      models: []
+      models: [],
+      counter: 1
     };
+  },
+  created() {
+    setInterval(() => {
+      this.counter += 1;
+    }, 6000);
+  },
+  watch: {
+    counter(newVal) {
+      if (newVal === this.all.length) {
+        this.counter = 0;
+      }
+      if (newVal === -1) {
+        this.counter = this.all.length;
+      }
+    }
   },
   computed: {
     all() {
@@ -55,6 +84,26 @@ section {
     justify-content: space-between;
     width: 100%;
     padding-bottom: 0px;
+  }
+  & .feature-moblie {
+    display: none;
+  }
+}
+@media only screen and (max-width: 450px) {
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    & .feature {
+      display: none;
+    }
+    & .feature-moblie {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-bottom: 0px;
+    }
   }
 }
 </style>

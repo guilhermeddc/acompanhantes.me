@@ -1,12 +1,15 @@
 <template>
-  <div
-    :style="`background-image: url('${image}'); height: ${height}px`"
-    @mouseenter="active = !active"
-    @mouseleave="active = !active"
-  >
-    <h2 :style="active ? '' : 'display: none'">{{description}}</h2>
-    <p :style="active ? 'display: none' : ''">{{name}}</p>
-  </div>
+  <router-link :to="`/${city}/${id}`" class="card">
+    <div
+      class="card-model"
+      :style="`background-image: url('${image}'); height: ${height}vh`"
+      @mouseenter="active = !active"
+      @mouseleave="active = !active"
+    >
+      <h2 :style="active ? '' : 'display: none'">{{description}}</h2>
+      <p :style="active ? 'display: none' : ''">{{name}}</p>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -21,30 +24,39 @@ export default {
     description: VueTypes.string.def("description"),
     fontSize: VueTypes.number.def(16),
     Size: VueTypes.number.def(50),
-    height: VueTypes.number.def(380)
+    height: VueTypes.number.def(35),
+    id: VueTypes.number.isRequired
   },
   data() {
     return {
       active: false
     };
+  },
+  computed: {
+    city() {
+      return this.$store.getters.params;
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-div {
+.card {
+  width: 100%;
+}
+.card-model {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 10px 10px 20px;
+  margin: 10px 5px 20px;
   height: 380px;
   max-width: 100%;
-  width: 100%;
   border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: flex-end;
   border-bottom: 2px solid $tertiary;
+  box-shadow: $shadow;
   & p {
     display: flex;
     font-size: 16px;

@@ -31,6 +31,7 @@
           <h2>Escolha sua cidade:</h2>
           <select id="city" class="input-cities" v-model="city">
             <option
+              class="itens"
               v-for="item in cities"
               :key="item.id"
               :value="item.slug"
@@ -122,7 +123,7 @@ export default {
     }
   }
   & .botton {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5), 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: $shadow;
     border-top: 3px solid $tertiary;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -136,7 +137,7 @@ export default {
     & .body-home {
       padding: 40px;
       width: 100%;
-      max-width: 500px;
+      max-width: 600px;
       height: 400px;
       display: flex;
       flex-direction: column;
@@ -173,6 +174,9 @@ export default {
           text-transform: uppercase;
           font-size: 16px;
         }
+        & .itens {
+          border-radius: 6px;
+        }
         & .btn-enter {
           margin-top: 10px;
           border-top: 3px solid $light;
@@ -187,6 +191,67 @@ export default {
           &:hover {
             opacity: 0.8;
             transition: opacity 0.3s;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  .home {
+    height: 150%;
+    width: 100%;
+    & .top {
+      align-items: center;
+      height: 300px;
+      & img {
+        margin-top: 10px;
+        width: 90%;
+        padding: 10px;
+      }
+      & h1 {
+        padding: 5px 10px;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 10px;
+      }
+      & nav {
+        display: flex;
+        padding: 5px;
+        justify-content: space-evenly;
+        & a {
+          display: none;
+        }
+        & p {
+          display: none;
+        }
+      }
+      & p {
+        display: none;
+      }
+      & h4 {
+        text-align: center;
+        padding: 0px;
+      }
+    }
+    & .botton {
+      padding: 0;
+      width: 100%;
+      height: 400px;
+      & .body-home {
+        padding: 10px;
+        & h1 {
+          font-size: 21px;
+          padding: 20px;
+        }
+        & p {
+          padding: 0 20px;
+        }
+        & .body-botton {
+          padding: 20px;
+          & .btn-enter {
+            font-size: 26px;
           }
         }
       }
