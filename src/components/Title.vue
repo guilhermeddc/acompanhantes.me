@@ -23,7 +23,6 @@ h1 {
   color: $light !important;
   font-size: 24px;
   box-shadow: $shadow;
-  /* box-shadow: inset -7px -7px 14px #272727, inset 7px 7px 14px #393939; */
   width: 99.2%;
   border-top: 2px solid $tertiary;
   border-radius: 6px;

@@ -1,69 +1,57 @@
 <template>
   <BaseLayout>
-    <div class="slider">
-      <vue-flux
-        :options="vfOptions"
-        :images="vfImages"
-        :transitions="vfTransitions"
-        :captions="vfCaptions"
-        ref="slider"
-      >
-        <template v-slot:preloader>
-          <flux-preloader />
-        </template>
-
-        <template v-slot:caption>
-          <flux-caption />
-        </template>
-
-        <template v-slot:controls>
-          <flux-controls />
-        </template>
-
-        <template v-slot:pagination>
-          <flux-pagination />
-        </template>
-
-        <template v-slot:index>
-          <flux-index />
-        </template>
-      </vue-flux>
+    <section class="container">
+      <div class="model-title">
+        <div>
+          <h2>{{model.slug}}</h2>
+          <p>{{model.phone}}</p>
+        </div>
+        <a
+          :href="`https://api.whatsapp.com/send?phone=55${model.phone}&text=Ol%C3%A1,%20vi%20vc%20no%20Acompanhantes.me%20e%20gostaria%20de%20saber%20um%20pouco%20mais.`"
+          target="_blank"
+        >
+          <img :src="WhatsApp" alt="WhatsApp" />
+        </a>
+      </div>
+    </section>
+    <div>
+      <VueGallery :images="fluxImages" :index="index" @close="index = null" />
+      <div class="gallery">
+        <div
+          class="image"
+          v-for="(image, imageIndex) in fluxImages"
+          :key="imageIndex"
+          @click="index = imageIndex"
+          :style="{ backgroundImage: `url('${image}')`, width: '48%', height: '300px' }"
+        />
+      </div>
     </div>
-    <Section>{{model}}</Section>
+    <br />
+    {{model}}
+    <br />
+    <br />
+    {{fluxImages}}
   </BaseLayout>
 </template>
 
 <script>
 import BaseLayout from "../layouts/BaseLayout";
 import { instance as api } from "../plugins/api";
-import {
-  VueFlux,
-  FluxCaption,
-  FluxControls,
-  FluxIndex,
-  FluxPagination,
-  FluxPreloader
-} from "vue-flux";
+import WhatsApp from "../assets/icons/whatsapplogo.png";
+import VueGallery from "vue-gallery";
 
 export default {
-  name: "Home",
+  name: "Models",
   components: {
     BaseLayout,
-    VueFlux,
-    FluxCaption,
-    FluxControls,
-    FluxIndex,
-    FluxPagination,
-    FluxPreloader
+    VueGallery
   },
   data: () => ({
-    vfOptions: {
-      autoplay: true
-    },
-    vfImages: [],
-    vfTransitions: ["fade"],
-    vfCaptions: [],
-    model: {}
+    WhatsApp,
+    images: [],
+    model: {},
+    fluxImages: [],
+    index: null
   }),
   created() {
     this.getImages();
@@ -86,8 +74,8 @@ export default {
     async getImages() {
       try {
         const { data: res } = await api.get(`/photos/?client=${this.id}`);
-        this.vfImages = res.results.map(img => img.photo);
-        this.vfCaptions = res.results.map(desc => desc.title);
+        this.images = res.results;
+        this.fluxImages = res.results.map(r => r.photo);
       } catch (error) {
         console.error(error);
       }
@@ -105,14 +93,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.vue-flux .flux-caption {
-  font-family: "Odibee Sans", cursive;
-  font-size: 18px !important;
-  border-top: 2px solid #f9057c;
+.model-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 20px 10px -15px;
+  padding: 15px 0 15px 15px;
+  color: $light !important;
+  box-shadow: $shadow;
+  width: 99.2%;
+  border-top: 2px solid $tertiary;
   border-radius: 6px;
+  background: linear-gradient(315deg, #333333, #2b2b2b);
+  & div {
+    & h2 {
+      font-weight: normal;
+    }
+    & p {
+      font-weight: 300;
+      font-size: 14px;
+      color: $tertiary;
+    }
+  }
 }
-.slider {
-  margin-top: 20px;
-  width: 100%;
+.gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  & .image {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: $shadow;
+    border-top: 2px solid $tertiary;
+    border-radius: 6px;
+    margin: 10px 5px;
+    cursor: pointer;
+  }
 }
 </style>

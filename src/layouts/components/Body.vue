@@ -71,7 +71,7 @@ section {
     align-items: center;
     width: 100%;
   }
-  & div {
+  & > div {
     display: none;
   }
   & article {
@@ -86,10 +86,10 @@ section {
   section {
     padding: 10px auto;
     flex-direction: column;
-    & nav {
+    & > nav {
       display: none;
     }
-    & div {
+    & > div {
       display: flex;
       width: 100%;
     }
