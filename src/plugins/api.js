@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  // baseURL: 'http://127.0.0.1:8000/acompanhantes',
+  baseURL: 'http://127.0.0.1:8000/v1/acompanhantes',
   // baseURL: 'http://3.12.109.197:8000/',
-  baseURL: 'http://3.13.55.240:8000/v1/acompanhantes',
+  // baseURL: 'http://3.13.55.240:8000/v1/acompanhantes',
   headers: { 'Content-Type': 'application/json' }
 });
 

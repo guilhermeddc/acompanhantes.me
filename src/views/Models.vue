@@ -3,7 +3,7 @@
     <section class="container">
       <div class="model-title">
         <div>
-          <h2>{{model.slug}}</h2>
+          <h2>{{model.slug}} - {{model.age}} anos</h2>
           <p>{{model.phone}}</p>
         </div>
         <a
@@ -14,16 +14,76 @@
         </a>
       </div>
     </section>
-    <div>
-      <VueGallery :images="fluxImages" :index="index" @close="index = null" />
-      <div class="gallery">
-        <div
-          class="image"
-          v-for="(image, imageIndex) in fluxImages"
-          :key="imageIndex"
-          @click="index = imageIndex"
-          :style="{ backgroundImage: `url('${image}')`, width: '48%', height: '300px' }"
-        />
+    <div class="profile" :style="{ backgroundImage: `url('${model.image}')` }" />
+    <div class="model-profile">
+      <div class="model-services">
+        <h2>Serviços</h2>
+        <div>
+          <span v-for="(item, index) in model.services_offered" :key="index">
+            {{ item.services }}
+            <strong
+              v-if="index != Object.keys(model.services_offered).length - 1"
+            >/</strong>
+          </span>
+        </div>
+        <br />
+        <h2>Descrição</h2>
+        <p>{{model.description}}</p>
+      </div>
+      <div>
+        <VueGallery :images="fluxImages" :index="index" @close="index = null" />
+        <div class="gallery">
+          <div
+            class="image"
+            v-for="(image, imageIndex) in fluxImages"
+            :key="imageIndex"
+            @click="index = imageIndex"
+            :style="{ backgroundImage: `url('${image}')` }"
+          />
+        </div>
+      </div>
+      <div class="model-detail">
+        <h2>Perfil da modelo</h2>
+        <span>
+          <p>Nome:</p>
+          <p>{{model.slug}}</p>
+        </span>
+        <span>
+          <p>Cidade:</p>
+          <p>{{local}}</p>
+        </span>
+        <span>
+          <p>Idade:</p>
+          <p>{{model.age}}</p>
+        </span>
+        <span>
+          <p>Genero:</p>
+          <p>{{model.genre.genre}}</p>
+        </span>
+        <span>
+          <p>Etinia:</p>
+          <p>{{model.ethnicity.ethnicity}}</p>
+        </span>
+        <span>
+          <p>Locais:</p>
+          <p>
+            <span v-for="(item, index) in model.places_accepted" :key="index">
+              {{item.place}}
+              <strong v-if="index != Object.keys(model.places_accepted).length - 1">/</strong>
+            </span>
+          </p>
+        </span>
+        <span>
+          <p>Pagamentos:</p>
+          <p>
+            <span v-for="(item, index) in model.payments_accepted" :key="index">
+              {{item.payment}}
+              <strong
+                v-if="index != Object.keys(model.payments_accepted).length - 1"
+              >/</strong>
+            </span>
+          </p>
+        </span>
       </div>
     </div>
     <br />
@@ -60,6 +120,9 @@ export default {
   computed: {
     id() {
       return this.$route.params.id;
+    },
+    local() {
+      return `${this.model.acting_cities[0].name} - ${this.model.acting_cities[0].state.uf}`;
     }
   },
   watch: {
@@ -95,14 +158,13 @@ export default {
 <style lang="scss" scoped>
 .model-title {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 20px 10px -15px;
+  margin: 10px 20px 0px -15px;
   padding: 15px 0 15px 15px;
   color: $light !important;
   box-shadow: $shadow;
-  width: 99.2%;
+  width: 100%;
   border-top: 2px solid $tertiary;
   border-radius: 6px;
   background: linear-gradient(315deg, #333333, #2b2b2b);
@@ -117,6 +179,70 @@ export default {
     }
   }
 }
+.profile {
+  width: 99%;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 10px auto;
+  box-shadow: $shadow;
+  border-top: 2px solid $tertiary;
+  border-radius: 6px;
+}
+.model-services {
+  margin: 5px;
+  padding: 10px;
+  box-shadow: $shadow;
+  border-top: 2px solid $tertiary;
+  border-radius: 6px;
+  color: $light;
+  & > h2 {
+    margin: 10px 15px;
+    padding-bottom: 10px;
+    border-bottom: 0.1px solid $tertiary;
+    font-weight: normal;
+  }
+  & > div,
+  p {
+    margin: 10px 15px;
+    text-align: justify;
+    font-weight: 300;
+    & span {
+      & strong {
+        color: $tertiary;
+        padding: 0 5px;
+      }
+    }
+  }
+}
+.model-detail {
+  margin: 20px 5px;
+  padding: 10px;
+  box-shadow: $shadow;
+  border-top: 2px solid $tertiary;
+  border-radius: 6px;
+  color: $light;
+  text-align: justify;
+  & > h2 {
+    margin: 10px 15px;
+    padding-bottom: 10px;
+    border-bottom: 0.1px solid $tertiary;
+    font-weight: normal;
+  }
+  & > span {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 15px;
+    padding-bottom: 7px;
+    border-bottom: 0.1px solid $tertiary;
+    font-weight: 300;
+    & strong {
+      color: $tertiary;
+      padding: 0 5px;
+    }
+  }
+}
 .gallery {
   display: flex;
   justify-content: space-around;
@@ -126,11 +252,17 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    width: 48%;
+    height: 300px;
     box-shadow: $shadow;
     border-top: 2px solid $tertiary;
     border-radius: 6px;
     margin: 10px 5px;
     cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+      transition: all 0.5s;
+    }
   }
 }
 </style>
